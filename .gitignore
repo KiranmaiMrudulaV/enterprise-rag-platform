@@ -1,0 +1,41 @@
+# Personal study material — not part of the public portfolio repo
+docs/interview-prep.md
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+
+# Environment secrets
+.env
+.env.local
+backend/.env
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.vite/
+
+# Uploaded files (local dev storage)
+uploads/
+backend/uploads/
+
+# Docker
+*.pid
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
