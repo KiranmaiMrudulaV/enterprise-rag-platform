@@ -10,6 +10,7 @@ AsyncSessionLocal = async_sessionmaker(engine, class_=AsyncSession, expire_on_co
 
 class Base(DeclarativeBase):
     """All ORM models inherit from this. Alembic uses it for autogenerate."""
+
     pass
 
 

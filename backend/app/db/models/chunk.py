@@ -1,11 +1,18 @@
 import uuid
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from sqlalchemy import DateTime, ForeignKey, Integer, String, Text, func
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.database import Base
+
+if TYPE_CHECKING:
+    # Import only for type-checkers — a real runtime import here would create a
+    # circular import with document.py. SQLAlchemy resolves the "Document" string
+    # in Mapped[...] on its own once app/db/models/__init__.py loads both models.
+    from app.db.models.document import Document
 
 
 class Chunk(Base):

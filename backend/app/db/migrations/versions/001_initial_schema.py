@@ -4,6 +4,7 @@ Revision ID: 001
 Revises:
 Create Date: 2026-01-01 00:00:00
 """
+
 from typing import Sequence, Union
 
 import sqlalchemy as sa
@@ -46,7 +47,10 @@ def upgrade() -> None:
         "chunks",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True),
         sa.Column(
-            "document_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("documents.id", ondelete="CASCADE"), nullable=False
+            "document_id",
+            postgresql.UUID(as_uuid=True),
+            sa.ForeignKey("documents.id", ondelete="CASCADE"),
+            nullable=False,
         ),
         sa.Column("chroma_id", sa.String(500), nullable=False, unique=True),
         sa.Column("chunk_index", sa.Integer, nullable=False),

@@ -1,0 +1,19 @@
+[tool.black]
+line-length = 115
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 115
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = [
+    "E501",  # line length enforced by black instead
+    "B008",  # Depends()/File() in argument defaults is FastAPI's own DI idiom, not a bug
+]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+disallow_untyped_defs = false

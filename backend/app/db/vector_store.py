@@ -41,8 +41,7 @@ class VectorStore:
             embeddings=[c["embedding"] for c in chunks],
             documents=[c["text"] for c in chunks],
             metadatas=[
-                {"document_id": c["document_id"], "page_number": c.get("page_number") or -1}
-                for c in chunks
+                {"document_id": c["document_id"], "page_number": c.get("page_number") or -1} for c in chunks
             ],
         )
 

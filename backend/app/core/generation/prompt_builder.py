@@ -20,9 +20,7 @@ class PromptBuilder:
         context_chunks: [{"document_name", "page_number", "text"}], in retrieval-rank order.
         The order here IS the citation numbering — chunk 0 becomes [1], chunk 1 becomes [2], etc.
         """
-        context_block = "\n\n".join(
-            self._format_chunk(i, chunk) for i, chunk in enumerate(context_chunks)
-        )
+        context_block = "\n\n".join(self._format_chunk(i, chunk) for i, chunk in enumerate(context_chunks))
 
         return (
             f"{SYSTEM_INSTRUCTION}\n\n"

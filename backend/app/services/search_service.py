@@ -51,7 +51,9 @@ class SearchService:
         ]
 
         latency_ms = int((time.time() - start) * 1000)
-        source_ids = [chunk_by_chroma_id[c["chroma_id"]].id for c in context_chunks if c["chroma_id"] in chunk_by_chroma_id]
+        source_ids = [
+            chunk_by_chroma_id[c["chroma_id"]].id for c in context_chunks if c["chroma_id"] in chunk_by_chroma_id
+        ]
 
         history = SearchHistory(
             query=request.query,
@@ -88,7 +90,9 @@ class SearchService:
             for i, c in enumerate(context_chunks)
         ]
         latency_ms = int((time.time() - start) * 1000)
-        source_ids = [chunk_by_chroma_id[c["chroma_id"]].id for c in context_chunks if c["chroma_id"] in chunk_by_chroma_id]
+        source_ids = [
+            chunk_by_chroma_id[c["chroma_id"]].id for c in context_chunks if c["chroma_id"] in chunk_by_chroma_id
+        ]
 
         history = SearchHistory(
             query=request.query,
