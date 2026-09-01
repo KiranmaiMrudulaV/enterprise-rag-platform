@@ -39,7 +39,16 @@ class Settings(BaseSettings):
     chunk_size: int = 512
     chunk_overlap: int = 50
     retrieval_top_k: int = 5
-    low_confidence_threshold: float = 0.50  # AI-05: below this, fall back to related-docs mode
+    # AI-05: below this cosine similarity, fall back to related-docs mode.
+    # 0.50 was a placeholder (see requirements.md's open questions) never validated
+    # against real data because Phase 05 PoC was skipped. First real query against
+    # this model (all-MiniLM-L6-v2) surfaced a true-positive top match scoring 0.37 —
+    # 0.50 was rejecting correct answers. MiniLM produces compressed similarity
+    # scores (0.3-0.6 typical for genuinely relevant matches), unlike the 0.7+
+    # intuition from exact-match systems. 0.30 is an evidence-based interim value,
+    # not a final one — proper calibration is a RAGAS evaluation against a golden
+    # dataset (Phase 07), not a single example.
+    low_confidence_threshold: float = 0.30
 
 
 settings = Settings()
