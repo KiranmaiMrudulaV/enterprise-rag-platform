@@ -18,9 +18,10 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    document_status = postgresql.ENUM("pending", "processing", "ready", "failed", name="document_status")
-    document_status.create(op.get_bind())
-
+    # Do NOT also call document_status.create(op.get_bind()) here: create_table()
+    # below already creates this ENUM type as part of the column DDL. Doing both
+    # raises asyncpg.exceptions.DuplicateObjectError ("type already exists") because
+    # the type gets created twice — this is the fix for that exact failure.
     op.create_table(
         "documents",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True),
